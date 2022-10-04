@@ -185,6 +185,28 @@ when 'MANAGER' then sal*1.2
 end as job
 from emp;
 
+select all job from emp;
+
+select distinct job from emp;
+
+desc emp;
+select rownum , empno, ename, job from emp;
+
+select rownum , empno, ename, job from emp where rownum <= 5;
+
+-- 업무가 ‘SALESMAN’인 사람들의 월급의 평균, 총합, 최소값, 최대값을 구하기
+select avg(sal) avg, sum(sal) sum, min(sal) min, max(sal)max
+from emp
+where job ='SALESMAN';
+
+insert into emp(empno, ename, job)
+values(9001,'홍길동','SALESMAN');
+
+-- 커미션(COMM)을 받는 사람들의 수는
+select count(comm) comm
+from emp
+where not comm = 0;
+
 
 
 
