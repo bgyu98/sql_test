@@ -78,6 +78,12 @@ where not regexp_like(text,'[a-z]');
 select text
 from reg_tab
 where regexp_like(text,'[°¡-ÆR]');
+
+select text
+from reg_tab
+where text between '°¡' and 'ÆR';
+
+
 ?
 
 -- 10. µ¥ÀÌÅÍ Áß 'gg'³ª 'GG'°¡ µé¾îÀÖ´Â µ¥ÀÌÅÍ °Ë»ö
