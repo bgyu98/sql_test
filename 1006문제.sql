@@ -69,10 +69,25 @@ select o.id, sum(g.price*o.count)총금액
 from ex_order o full outer join ex_good g
 on o.gno = g.gno
 group by o.id,o.orderno;
-?
+
 
 -- [ 도전문제 ]
 
 --4. 3번에 주문 내역을 첫번재 상품명 외 몇 개로 출력
 -- [예] 20161212   머리끈 외 1개 
+
+--4. 3번에 주문 내역을 첫번재 상품명 외 몇 개로 출력
+SELECT E.ORDERNO, G.GNAME ||' 외'||(E.COUNT-1)||'개' GOOD
+FROM (SELECT ORDERNO, MIN(GNO) GNO, COUNT(ORDERNO) COUNT
+FROM EX_ORDER GROUP BY ORDERNO) E, EX_GOOD G
+WHERE E.GNO=G.GNO;
+
+select e.orderno, g.gname||' 외 '||(e.COUNT-1)||'개' as 주문내역
+from (select orderno, count(orderno) as COUNT ,min(gno) as GNO from ex_order group by orderno) e left outer join ex_good g
+on e.GNO = G.GNO;
+
+
+
+
+
 
